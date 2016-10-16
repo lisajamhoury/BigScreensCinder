@@ -29,5 +29,5 @@ public:
     cinder::vec2 mStartLoc;
     cinder::vec2 mLoc;
     cinder::vec2 mVel;
-    cinder::vec2 mLineVel;
+    cinder::vec2 mLineDest;
 };

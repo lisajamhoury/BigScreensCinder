@@ -7,6 +7,7 @@
 //
 
 #include "cinder/app/App.h"
+#include "cinder/Rand.h"
 #include "LeftSensor.hpp"
 #include "PulseLine.hpp"
 
@@ -15,18 +16,19 @@ using namespace ci::app;
 using namespace std;
 
 LeftSensor::LeftSensor() {
-    int dest = getWindowWidth()/2;
+    int dest = getWindowWidth()*0.7f;
     float frames = 10800.0;
     float tempVel = dest/frames;
     
-    float length = getWindowHeight();
-    float tempLength = length/frames;
+//    float height = getWindowHeight();
+//    float tempLength = 100;
     
     mStartLoc = vec2( 0, getWindowHeight()/2);
     mLoc = mStartLoc;
     mVel = vec2( tempVel, 0);
     
-    mLineVel = vec2( 0, tempLength );
+    //mLineVel = vec2( 0, tempLength );
+
 }
 
 void LeftSensor::update() {
@@ -51,7 +53,9 @@ void LeftSensor::draw() {
 }
 
 void LeftSensor::onInput () {
-    mPulseLines.push_back( PulseLine( mLoc, mLineVel ) );
-    mPulseLines.push_back( PulseLine( mLoc, -mLineVel ) );
+    float yDestLength = 40.0f + randFloat(-3, 3);
+    //mLineDest = vec2 (mLoc.x, posDestY );
+    mPulseLines.push_back( PulseLine( mLoc, vec2( mLoc.x, mLoc.y + yDestLength) ) );
+    mPulseLines.push_back( PulseLine( mLoc, vec2(mLoc.x, mLoc.y - yDestLength) ) );
 }
 

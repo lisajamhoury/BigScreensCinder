@@ -14,7 +14,7 @@ class PulseLine {
 public:
     
     PulseLine() {}
-    PulseLine( cinder::vec2 aLoc, cinder::vec2 aVel );
+    PulseLine( cinder::vec2 aLoc, cinder::vec2 aDest );
     
     void step();
     void display();
@@ -22,5 +22,5 @@ public:
     cinder::Shape2d mShape2d;
     cinder::vec2 mStartLoc;
     cinder::vec2 mLoc;
-    cinder::vec2 mVel;
+    cinder::vec2 mDest;
 };

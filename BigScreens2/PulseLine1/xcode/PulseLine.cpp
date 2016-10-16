@@ -10,21 +10,22 @@
 #include "PulseLine.hpp"
 
 using namespace ci;
+using namespace::std;
 
-PulseLine::PulseLine(vec2 aLoc, vec2 aVel) {
+PulseLine::PulseLine(vec2 aLoc, vec2 aDest) {
     mStartLoc = aLoc;
-    mLoc = mStartLoc;
-    mVel = aVel;
+    //mLoc = mStartLoc;
+    mDest = aDest;
 }
 
 void PulseLine::step() {
-    mLoc += mVel;
+    
 }
 
 void PulseLine::display() {
 
     gl::color(0.3f, 0.3f, 0.3f);
     mShape2d.moveTo( mStartLoc );
-    mShape2d.lineTo( mLoc );
+    mShape2d.lineTo( mDest );
     gl::draw( mShape2d );
 }
